@@ -1,1 +1,21 @@
 <p>Hola mundo</p>
+
+<div>
+    {{ title }}
+</div>
+
+<div>la suma de 2 y 2 es : {{2+2}}</div>
+
+<div>el doble de 3 es {{duplicarNumero(3)}}</div>
+
+<h2>Datos de la pelicula</h2>
+
+<div>
+    {{pelicula.titulo | uppercase}}
+    <p></p>
+    {{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}
+</div>
+
+<div>
+    {{pelicula.precio | currency}}
+</div>
