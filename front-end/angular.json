@@ -8,7 +8,11 @@
   "projects": {
     "front-end": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
