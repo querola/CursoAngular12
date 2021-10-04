@@ -17,6 +17,46 @@ export class AppComponent implements OnInit{
           titulo: 'Thor',
           fechaLanzamiento: new Date(),
           precio: 1099.99
+        },
+        {
+          titulo: 'spider Man',
+          fechaLanzamiento: new Date(),
+          precio: 1244.99
+        },
+        {
+          titulo: 'Thor',
+          fechaLanzamiento: new Date(),
+          precio: 1099.99
+        },
+        {
+          titulo: 'spider Man',
+          fechaLanzamiento: new Date(),
+          precio: 1244.99
+        },
+        {
+          titulo: 'Thor',
+          fechaLanzamiento: new Date(),
+          precio: 1099.99
+        },
+        {
+          titulo: 'spider Man',
+          fechaLanzamiento: new Date(),
+          precio: 1244.99
+        },
+        {
+          titulo: 'Thor',
+          fechaLanzamiento: new Date(),
+          precio: 1099.99
+        },
+        {
+          titulo: 'spider Man',
+          fechaLanzamiento: new Date(),
+          precio: 1244.99
+        },
+        {
+          titulo: 'Thor',
+          fechaLanzamiento: new Date(),
+          precio: 1099.99
         }]
     }, 3000);
     throw new Error('Method not implemented.');
