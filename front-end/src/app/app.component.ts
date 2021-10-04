@@ -8,13 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   ngOnInit(): void {
     setTimeout(() => {
-      this.peliculas = [
-        this.peliculas = {
+      this.peliculas = [{
           titulo: 'spider Man',
           fechaLanzamiento: new Date(),
           precio: 1244.99
         },
-        this.peliculas = {
+        {
           titulo: 'Thor',
           fechaLanzamiento: new Date(),
           precio: 1099.99
