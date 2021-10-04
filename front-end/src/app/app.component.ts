@@ -18,28 +18,13 @@ export class AppComponent implements OnInit{
           fechaLanzamiento: new Date(),
           precio: 1099.99
         }]
-    }, 1000);
+    }, 3000);
     throw new Error('Method not implemented.');
   }
   title = 'el valor que yo quiera';
 
   peliculasEnCines;
-  peliculasProximosEstrenos = [{
-    titulo: 'Avengers End Game',
-    fechaLanzamiento: new Date(),
-    precio: 1244.99
-  },
-  {
-    titulo: 'spiderman 4',
-    fechaLanzamiento: new Date(),
-    precio: 1099.99
-  },
-  {
-    titulo: 'Venom',
-    fechaLanzamiento: new Date(),
-    precio: 1099.99
-  }
-];
+  peliculasProximosEstrenos = [];
 
   duplicarNumero(valor: number): number{
     return valor * 2;

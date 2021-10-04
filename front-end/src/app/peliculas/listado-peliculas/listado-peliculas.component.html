@@ -1,22 +1,25 @@
-
-<div *ngIf="!peliculas">
-  <img src="https://acegif.com/wp-content/uploads/loading-9.gif"/>
-</div>
-
-<div *ngIf="peliculas?.length === 0">
-  <p>No hay peliculas para mostrar</p>
-</div>
-
-<div *ngIf="peliculas && peliculas.length > 0">
-<div *ngFor="let pelicula of peliculas; let index = index"  i class="pelicula-contenedor">
-    <div>
-        Pelicula {{index}}: {{pelicula.titulo | uppercase}}
+<app-listado-generico [listado]="peliculas">
+  <ng-container vacio>
+    <div>Mensaje personaliado para contenido <b>vacio</b></div>
+  </ng-container>
+  <ng-container contenido>
+    <div
+      *ngFor="let pelicula of peliculas; let index = index"
+      i
+      class="pelicula-contenedor"
+    >
+      <div>
+        Pelicula {{ index }}: {{ pelicula.titulo | uppercase }}
+        <button style="margin-left: 1rem" (click)="remover(index)">
+          Remover
+        </button>
+      </div>
+      <div>
+        {{ pelicula.fechaLanzamiento | date: "dd-MMMM-yyyy" | uppercase }}d
+      </div>
+      <div>
+        {{ pelicula.precio | currency }}
+      </div>
     </div>
-    <div>
-        {{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}d
-    </div>
-    <div>
-        {{pelicula.precio | currency}}
-    </div>
-</div>
-</div>
+  </ng-container>
+</app-listado-generico>
