@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-filtro-peliculas',
   templateUrl: './filtro-peliculas.component.html',
@@ -8,7 +9,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class FiltroPeliculasComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+     private location : Location,
+     private activatedRoute: ActivatedRoute) { }
 
   form: FormGroup
 
@@ -36,20 +39,59 @@ export class FiltroPeliculasComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(this.formularioOriginal);
-
-
+    this.leerValoresURL();
+    this.buscarPeliculas(this.form.value);
     this.form.valueChanges
       .subscribe(valores => {
         this.peliculas = this.peliculasOriginal;
         this.buscarPeliculas(valores);
+        this.escribirParametrosBusquedaEnURL();
       })
   }
 
+  private leerValoresURL(){
+    this.activatedRoute.queryParams.subscribe((paramas) =>{
+      var objeto: any = {};
+
+      if(paramas.titulo){
+        objeto.titulo = paramas.titulo;
+      }
+      if(paramas.generoId){
+        objeto.generoId = Number(paramas.generoId);
+      }
+      
+      if(paramas.enCines){
+        objeto.enCines = paramas.enCines;
+      }
+
+      this.form.patchValue(objeto);
+    }
+    )
+  }
+  private escribirParametrosBusquedaEnURL(){
+    var queryString = [];
+
+    var valoresFormulario = this.form.value;
+
+    if (valoresFormulario.titulo){
+      queryString.push(`titulo=${valoresFormulario.titulo}`)
+    }
+    if (valoresFormulario.generoId){
+      queryString.push(`generoId=${valoresFormulario.generoId}`)
+    }
+    if (valoresFormulario.proximosEstrenos){
+      queryString.push(`proximosEstrenos=${valoresFormulario.proximosEstrenos}`)
+    }
+    if (valoresFormulario.enCines){
+      queryString.push(`enCines=${valoresFormulario.enCines}`)
+    }
+
+    this.location.replaceState('peliculas/buscar', queryString.join('&'));
+  }
   buscarPeliculas(valores: any){
     if (valores.titulo){
       this.peliculas = this.peliculas.filter(pelicula => pelicula.titulo.indexOf(valores.titulo) !== -1);
-      // console.log(this.peliculas)
-  
+
     }
     
     if (valores.generoId !== 0){
